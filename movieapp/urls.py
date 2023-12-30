@@ -43,6 +43,5 @@ urlpatterns = [
     #path("users/", views.UserModelView.as_view()),
     path('api/', include(router.urls)),
     #path("users1/", views.UserModelView1.as_view()),
-    #path('',include("movies.urls")),
     #path('',include("apis.urls"))
 ]

@@ -14,12 +14,20 @@ class CombinedModelView(APIView):
         model1_data = books.objects.all()
         model2_data = cocukkitabi.objects.all()
         model3_data = education.objects.all()
+        model4_data = macera.objects.all()
+        model5_data = gerilim.objects.all()
+        model6_data = biyografik.objects.all()
+        model7_data = aksiyon.objects.all() 
     
         
         serializer = CombinedModelSerializer({
-            'model1': UserModelSerializer(model1_data, many=True).data,
-            'model2': UserModelSerializer1(model2_data, many=True).data,
-            'model3': UserModelSerializer2(model3_data, many=True).data,
+            'BilimKurgu': UserModelSerializer(model1_data, many=True).data,
+            'CocukKitabi': UserModelSerializer1(model2_data, many=True).data,
+            'Egitim': UserModelSerializer2(model3_data, many=True).data,
+            'Macera': UserModelSerializer3(model4_data, many=True).data,
+            'Gerilim': UserModelSerializer4(model5_data, many=True).data,
+            'Biyografik': UserModelSerializer5(model6_data, many=True).data,
+            'Aksiyon': UserModelSerializer6(model7_data, many=True).data, 
         })
 
         return Response(serializer.data)
@@ -78,39 +86,3 @@ class Model7ViewSet(viewsets.ModelViewSet):
     queryset = aksiyon.objects.all()
     serializer_class = UserModelSerializer6
 # Create your views here.
-"""kategori_liste = ["macera","romantik","dram","bilim kurgu"]
-film_liste =[
-    {
-        "film_adi" : "film 1",
-        "aciklama" : "film 1 açıklama",
-        "resim" : "1.jpeg",
-        "anasayfa": True
-    },
-     { "film_adi" : "film 2",
-        "aciklama" : "film 2 açıklama",
-        "resim" : "2.jpeg",
-        "anasayfa": False
-       },
-    {
-        "film_adi" : "film 3",
-        "aciklama" : "film 3 açıklama",
-        "resim" : "3.jpeg",
-        "anasayfa": True
-    }   
-    ]
-"""
-"""def home(request):
-    data = {
-        "kategoriler" : kategori_liste,
-        "filmler" : film_liste 
-    }
-    return render(request,"index.html",data)
-def movies(request):
-    data = {
-        "kategoriler" : kategori_liste,
-        "filmler" : film_liste 
-    }
-    #sorgu=books.objects.filter(name="sinan")
-    #sorgu="asd"
-    #sorgu.save()
-    return render(request,"movies.html",data)"""    

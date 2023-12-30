@@ -83,9 +83,9 @@ class CustomIDMixin(models.Model):
 class books(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_id)
     name = models.CharField(max_length=80)
-    detail = models.CharField(max_length=1000)
+    detail = models.CharField(max_length=10000)
     review = models.CharField(max_length=1000)
-    rate = models.IntegerField(
+    rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     pdf =models.FileField(null=True, blank=True)
@@ -96,9 +96,9 @@ class books(models.Model):
 class cocukkitabi(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idcocuk)
     name = models.CharField(max_length=80)
-    detail = models.CharField(max_length=1000)
+    detail = models.CharField(max_length=10000)
     review = models.CharField(max_length=1000)
-    rate = models.IntegerField(
+    rate = models.  FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     pdf =models.FileField(null=True, blank=True)
@@ -107,9 +107,9 @@ class cocukkitabi(models.Model):
 class gerilim(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idgerilim)
     name = models.CharField(max_length=80)
-    detail = models.CharField(max_length=1000)
+    detail = models.CharField(max_length=10000)
     review = models.CharField(max_length=1000)
-    rate = models.IntegerField(
+    rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     pdf =models.FileField(null=True, blank=True)
@@ -118,9 +118,9 @@ class gerilim(models.Model):
 class macera(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idmacera)
     name = models.CharField(max_length=80)
-    detail = models.CharField(max_length=1000)
+    detail = models.CharField(max_length=10000)
     review = models.CharField(max_length=1000)
-    rate = models.IntegerField(
+    rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     pdf =models.FileField(null=True, blank=True)  
@@ -128,7 +128,7 @@ class macera(models.Model):
 class aksiyon(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idaksiyon)
     name = models.CharField(max_length=80)
-    detail = models.CharField(max_length=1000)
+    detail = models.CharField(max_length=10000)
     review = models.CharField(max_length=1000)
     rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
@@ -139,7 +139,7 @@ class aksiyon(models.Model):
 class biyografik(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idbiyografik)
     name = models.CharField(max_length=80)
-    detail = models.CharField(max_length=1000)
+    detail = models.CharField(max_length=10000)
     review = models.CharField(max_length=1000)
     rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
@@ -149,9 +149,9 @@ class biyografik(models.Model):
 class education(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_ideducation)
     name = models.CharField(max_length=80)
-    detail = models.CharField(max_length=1000)
+    detail = models.CharField(max_length=10000)
     review = models.CharField(max_length=1000)
-    rate = models.IntegerField(
+    rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     pdf =models.FileField(null=True, blank=True)
