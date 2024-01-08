@@ -3,8 +3,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("",views.home),
-    path("Home",views.home),
+    #path("",views.home),
+    #path("Home",views.home),
     #path("CareBook",views.movies),
     #path("Thriller",views.movies),
     #path("Action",views.movies),

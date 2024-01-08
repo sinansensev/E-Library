@@ -1,3 +1,4 @@
+from pdb import post_mortem
 from django.shortcuts import render
 from movies.models import *
 from rest_framework.views import APIView
@@ -8,6 +9,7 @@ from rest_framework import viewsets
 from .serializers import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
+
 
 class CombinedModelView(APIView):
     def get(self, request, format=None):

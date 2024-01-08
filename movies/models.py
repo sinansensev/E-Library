@@ -1,8 +1,13 @@
+from itertools import product
 from multiprocessing.sharedctypes import Value
+from sqlite3 import Date
 from statistics import mode
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-# Create your models here.    
+from django.contrib.auth.models import User
+# Create your models here. 
+
+
 def generate_custom_id():
     
     return 1000 + books.objects.count()    
@@ -156,3 +161,19 @@ class education(models.Model):
     )
     pdf =models.FileField(null=True, blank=True)
     catid = models.IntegerField(default=7)  
+
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    id = books.id
+class Review(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='ratings')
+    value = models.PositiveIntegerField() 
+    created_at = models.DateTimeField(auto_now_add=True)

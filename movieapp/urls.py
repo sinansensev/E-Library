@@ -19,7 +19,7 @@ from django.urls import path,include
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework.routers import DefaultRouter
 from movies.views import *
-from movies import views
+from account.urls import *
 
 
 #http://127.0.0.1:8000/movies
@@ -41,7 +41,11 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/allofthem', CombinedModelView.as_view(), name='combined-model'),
     #path("users/", views.UserModelView.as_view()),
+    #path('add_user_view/', add_user_view, name='add_user_view'),
     path('api/', include(router.urls)),
     #path("users1/", views.UserModelView1.as_view()),
     #path('',include("apis.urls"))
+    path('', include('account.urls')),
+    path('comment/', include('movies.urls')),
+    
 ]
