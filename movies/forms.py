@@ -1,16 +1,16 @@
-'''from django import forms
-from .models import Comment
+from django import forms 
+from django.contrib.auth.models import User
+from movies.models import Review, Rating
 
-class CommentForm(forms.ModelForm):
-    content = forms.CharField(widget = forms.Textarea(attrs={
-        'rows': '4',
-    }))
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['text']
 
-class Meta:
-    model = Comment
-    fields = ('content',)    
-    '''
-
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        fields = ['value']
 
 
 # forms.py

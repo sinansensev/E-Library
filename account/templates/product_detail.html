@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews</title>
+</head>
+<body>
+    <h1>Reviews</h1>
+
+    {% for review in reviews %}
+        <div>
+            <h2>{{ review.category }}</h2>
+            <h3>{{ review.rate }}</h3>
+            <p>{{ review.review }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

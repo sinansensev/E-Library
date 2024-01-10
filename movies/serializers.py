@@ -1,5 +1,13 @@
 from rest_framework import fields, serializers
 from .models import *
+class AksiyonPDFModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = aksiyon
+        fields = '__all__'
+class EducationPDFModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = education
+        fields = '__all__'
 class UserModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = books

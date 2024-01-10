@@ -20,6 +20,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework.routers import DefaultRouter
 from movies.views import *
 from account.urls import *
+#from movies.views import EducationDownloadPDFAPIView
 
 
 #http://127.0.0.1:8000/movies
@@ -46,6 +47,9 @@ urlpatterns = [
     #path("users1/", views.UserModelView1.as_view()),
     #path('',include("apis.urls"))
     path('', include('account.urls')),
-    path('comment/', include('movies.urls')),
+    path('product/<int:id>/', views.product_detail, name='product_detail'),
+    path('api/download-education-pdf/<int:pk>/', EducationDownloadPDFAPIView.as_view(), name='download-pdf-api'),
+    path('api/download-aksiyon-pdf/<int:pk>/', AksiyonDownloadPDFAPIView.as_view(), name='download-pdf-api'),
+    #path('comment/', include('movies.urls')),
     
 ]

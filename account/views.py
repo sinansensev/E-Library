@@ -1,11 +1,10 @@
+from pickle import NONE
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout 
 from .forms import UserCreationForm, LoginForm
-from movies.models import Product
-from .forms import ReviewForm, RatingForm 
+from movies.models import Book
+#from .forms import ReviewForm, RatingForm 
 from django.shortcuts import render, get_object_or_404, redirect
-
-
 
 # Create your views here.
 # Home page
@@ -46,21 +45,23 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 
 def product_detail(request, id):
-    product = get_object_or_404(Product, pk=id) 
-
+    print("asdhgadshsdh",id)
+    book = get_object_or_404(Book, pk=id)
+    print(book)
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)
+        print("TEST: \n\n\n", review_form)
         rating_form = RatingForm(request.POST)
 
         if review_form.is_valid() and rating_form.is_valid():
             review = review_form.save(commit=False)
             review.user = request.user
-            review.product = product
+            review.book = book
             review.save()
 
             rating = rating_form.save(commit=False)
             rating.user = request.user
-            rating.product = product
+            rating.book = book
             rating.save()
 
             return redirect('product_detail', product_id=id)
@@ -68,5 +69,5 @@ def product_detail(request, id):
         review_form = ReviewForm()
         rating_form = RatingForm()
 
-    return render(request, 'movies/product_detail.html', {'product': product, 'review_form': review_form, 'rating_form': rating_form})
+    return render(request, 'product.html', {'book': book, 'review_form': review_form, 'rating_form': rating_form})
 
