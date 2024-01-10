@@ -89,12 +89,14 @@ class books(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_id)
     name = models.CharField(max_length=80)
     detail = models.CharField(max_length=10000)
-    #review = models.CharField(max_length=1000)
+    review = models.CharField(max_length=1000)
     rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     pdf =models.FileField(null=True, blank=True)
     catid = models.IntegerField(default=1) 
+    image = models.ImageField(null=False, blank=True)
+    author = models.TextField(max_length=50,null=True, blank=True)
 
     
 
@@ -108,6 +110,8 @@ class cocukkitabi(models.Model):
     )
     pdf =models.FileField(null=True, blank=True)
     catid = models.IntegerField(default=2)
+    image = models.ImageField(null=False, blank=True)
+    author = models.TextField(max_length=50,null=True, blank=True)
 
 class gerilim(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idgerilim)
@@ -119,6 +123,8 @@ class gerilim(models.Model):
     )
     pdf =models.FileField(null=True, blank=True)
     catid = models.IntegerField(default=3) 
+    image = models.ImageField(null=False, blank=True)
+    author = models.TextField(max_length=50,null=True, blank=True)
 
 class macera(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idmacera)
@@ -130,6 +136,8 @@ class macera(models.Model):
     )
     pdf =models.FileField(null=True, blank=True)  
     catid = models.IntegerField(default=4) 
+    image = models.ImageField(null=False, blank=True)
+    author = models.TextField(max_length=50,null=True, blank=True)
 
 
 class aksiyon(models.Model):
@@ -142,6 +150,8 @@ class aksiyon(models.Model):
     )
     pdf =models.FileField(null=True, blank=True)  
     catid = models.IntegerField(default=5) 
+    image = models.ImageField(null=False, blank=True)
+    author = models.TextField(max_length=50,null=True, blank=True)
 
 
 class biyografik(models.Model):
@@ -154,6 +164,8 @@ class biyografik(models.Model):
     )
     pdf =models.FileField(null=True, blank=True)
     catid = models.IntegerField(default=6)   
+    image = models.ImageField(null=False, blank=True)
+    author = models.TextField(max_length=50,null=True, blank=True)
 
 
 class education(models.Model):
@@ -166,6 +178,8 @@ class education(models.Model):
     )
     pdf =models.FileField(null=True, blank=True)
     catid = models.IntegerField(default=7) 
+    image = models.ImageField(null=False, blank=True)
+    author = models.TextField(max_length=50,null=True, blank=True)
 
 
 class Book(models.Model):
@@ -184,6 +198,8 @@ class Book(models.Model):
     rate = models.FloatField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     pdf = models.FileField(null=True, blank=True)
     category = models.CharField(max_length=15, choices=CATEGORY_CHOICES, default='books')
+    image = models.ImageField(null=False, blank=True)
+    author = models.TextField(max_length=50,null=True, blank=True)
     def save(self, *args, **kwargs):
         if not self.id:
             last_id = Book.objects.order_by('-id').first()
