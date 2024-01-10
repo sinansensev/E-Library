@@ -1,5 +1,25 @@
 from rest_framework import fields, serializers
 from .models import *
+class BiyografikPDFModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = biyografik
+        fields = '__all__'
+class GerilimPDFModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = gerilim
+        fields = '__all__'
+class MaceraPDFModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = macera
+        fields = '__all__'
+class ChildPDFModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = cocukkitabi
+        fields = '__all__'
+class KurguPDFModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = books
+        fields = '__all__'
 class AksiyonPDFModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = aksiyon

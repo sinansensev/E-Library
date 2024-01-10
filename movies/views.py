@@ -15,10 +15,64 @@ from django.shortcuts import get_object_or_404
 from movies.forms import ReviewForm, RatingForm 
 from django.shortcuts import render, get_object_or_404, redirect
 from movies.models import education
-
+from .serializers import KurguPDFModelSerializer
+from .serializers import MaceraPDFModelSerializer
+from .serializers import ChildPDFModelSerializer
+from .serializers import GerilimPDFModelSerializer
+from .serializers import BiyografikPDFModelSerializer
 from .serializers import EducationPDFModelSerializer
 from .serializers import AksiyonPDFModelSerializer
 
+class KurguDownloadPDFAPIView(APIView):
+    def get(self, request, pk):
+        bookt = get_object_or_404(books, pk=pk)
+
+        if bookt.pdf:
+            response = FileResponse(bookt.pdf, content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="{bookt.name}.pdf"'
+            return response
+        else:
+            return Response({'error': 'PDF not found'}, status=status.HTTP_404_NOT_FOUND)
+class MaceraDownloadPDFAPIView(APIView):
+    def get(self, request, pk):
+        bookt = get_object_or_404(macera, pk=pk)
+
+        if bookt.pdf:
+            response = FileResponse(bookt.pdf, content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="{bookt.name}.pdf"'
+            return response
+        else:
+            return Response({'error': 'PDF not found'}, status=status.HTTP_404_NOT_FOUND)
+class ChildDownloadPDFAPIView(APIView):
+    def get(self, request, pk):
+        bookt = get_object_or_404(cocukkitabi, pk=pk)
+
+        if bookt.pdf:
+            response = FileResponse(bookt.pdf, content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="{bookt.name}.pdf"'
+            return response
+        else:
+            return Response({'error': 'PDF not found'}, status=status.HTTP_404_NOT_FOUND)
+class GerilimDownloadPDFAPIView(APIView):
+    def get(self, request, pk):
+        bookt = get_object_or_404(gerilim, pk=pk)
+
+        if bookt.pdf:
+            response = FileResponse(bookt.pdf, content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="{bookt.name}.pdf"'
+            return response
+        else:
+            return Response({'error': 'PDF not found'}, status=status.HTTP_404_NOT_FOUND)
+class BiyografiDownloadPDFAPIView(APIView):
+    def get(self, request, pk):
+        bookt = get_object_or_404(biyografik, pk=pk)
+
+        if bookt.pdf:
+            response = FileResponse(bookt.pdf, content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="{bookt.name}.pdf"'
+            return response
+        else:
+            return Response({'error': 'PDF not found'}, status=status.HTTP_404_NOT_FOUND)
 class AksiyonDownloadPDFAPIView(APIView):
     def get(self, request, pk):
         bookt = get_object_or_404(aksiyon, pk=pk)

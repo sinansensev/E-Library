@@ -50,6 +50,11 @@ urlpatterns = [
     path('product/<int:id>/', views.product_detail, name='product_detail'),
     path('api/download-education-pdf/<int:pk>/', EducationDownloadPDFAPIView.as_view(), name='download-pdf-api'),
     path('api/download-aksiyon-pdf/<int:pk>/', AksiyonDownloadPDFAPIView.as_view(), name='download-pdf-api'),
+    path('api/download-bilimkurgu-pdf/<int:pk>/', KurguDownloadPDFAPIView.as_view(), name='download-pdf-api'),
+    path('api/download-cocukkitabi-pdf/<int:pk>/', ChildDownloadPDFAPIView.as_view(), name='download-pdf-api'),
+    path('api/download-macera-pdf/<int:pk>/', MaceraDownloadPDFAPIView.as_view(), name='download-pdf-api'),
+    path('api/download-biyografik-pdf/<int:pk>/', BiyografiDownloadPDFAPIView.as_view(), name='download-pdf-api'),
+    path('api/download-gerilim-pdf/<int:pk>/', GerilimDownloadPDFAPIView.as_view(), name='download-pdf-api'),
     #path('comment/', include('movies.urls')),
     
 ]
