@@ -3,7 +3,7 @@ from django.contrib import admin
 
 # Register your models here.
 from movies.models import *
-admin.site.register(Book)
+
 
 admin.site.register(books)
 admin.site.register(cocukkitabi)

@@ -4,7 +4,7 @@ from sqlite3 import Date
 from statistics import mode
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.contrib.auth.models import User
+
 # Create your models here. 
 
 
@@ -89,7 +89,7 @@ class books(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_id)
     name = models.CharField(max_length=80)
     detail = models.CharField(max_length=10000)
-    review = models.CharField(max_length=1000)
+    review = models.CharField(max_length=1000,default="-")
     rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
@@ -104,7 +104,7 @@ class cocukkitabi(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idcocuk)
     name = models.CharField(max_length=80)
     detail = models.CharField(max_length=10000)
-    review = models.CharField(max_length=1000)
+    review = models.CharField(max_length=1000,default="-")
     rate = models.  FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
@@ -117,7 +117,7 @@ class gerilim(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idgerilim)
     name = models.CharField(max_length=80)
     detail = models.CharField(max_length=10000)
-    review = models.CharField(max_length=1000)
+    review = models.CharField(max_length=1000,default="-")
     rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
@@ -130,7 +130,7 @@ class macera(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idmacera)
     name = models.CharField(max_length=80)
     detail = models.CharField(max_length=10000)
-    review = models.CharField(max_length=1000)
+    review = models.CharField(max_length=1000,default="-")
     rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
@@ -144,7 +144,7 @@ class aksiyon(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idaksiyon)
     name = models.CharField(max_length=80)
     detail = models.CharField(max_length=10000)
-    review = models.CharField(max_length=1000)
+    review = models.CharField(max_length=1000,default="-")
     rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
@@ -158,7 +158,7 @@ class biyografik(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_idbiyografik)
     name = models.CharField(max_length=80)
     detail = models.CharField(max_length=10000)
-    review = models.CharField(max_length=1000)
+    review = models.CharField(max_length=1000,default="-")
     rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
@@ -172,7 +172,7 @@ class education(models.Model):
     id = models.PositiveBigIntegerField(primary_key=True, default=generate_custom_ideducation)
     name = models.CharField(max_length=80)
     detail = models.CharField(max_length=10000)
-    review = models.CharField(max_length=1000)
+    review = models.CharField(max_length=1000,default="-")
     rate = models.FloatField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
@@ -211,17 +211,3 @@ class Book(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='book', null=True,blank=True)
     name = models.CharField(max_length=100)
     description = models.TextField()"""
-
-
-class Review(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='reviews',null=True,blank=True) #??? Bence olcak bakalım
-    text = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-
-
-class Rating(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='ratings',null=True,blank=True)
-    value = models.PositiveIntegerField() 
-    created_at = models.DateTimeField(auto_now_add=True)

@@ -12,7 +12,7 @@ from rest_framework.response import Response
 from django.http import HttpResponse
 from django.http import FileResponse
 from django.shortcuts import get_object_or_404
-from movies.forms import ReviewForm, RatingForm 
+
 from django.shortcuts import render, get_object_or_404, redirect
 from movies.models import education
 from .serializers import KurguPDFModelSerializer
@@ -22,6 +22,9 @@ from .serializers import GerilimPDFModelSerializer
 from .serializers import BiyografikPDFModelSerializer
 from .serializers import EducationPDFModelSerializer
 from .serializers import AksiyonPDFModelSerializer
+
+
+
 
 class KurguDownloadPDFAPIView(APIView):
     def get(self, request, pk):
@@ -172,29 +175,3 @@ class Model7ViewSet(viewsets.ModelViewSet):
     serializer_class = UserModelSerializer6
 # Create your views here.
 
-def product_detail(request, id):
-    print("asdhgadshsdh",id)
-    book = get_object_or_404(education, pk=pk) 
-    print(book)
-    if request.method == 'POST':
-        review_form = ReviewForm(request.POST)
-        print("TEST: \n\n\n", review_form)
-        rating_form = RatingForm(request.POST)
-
-        if review_form.is_valid() and rating_form.is_valid():
-            review = review_form.save(commit=False)
-            review.user = request.user
-            review.book = book
-            review.save()
-
-            rating = rating_form.save(commit=False)
-            rating.user = request.user
-            rating.book = book
-            rating.save()
-
-            return redirect('product_detail', product_id=id)
-    else:
-        review_form = ReviewForm()
-        rating_form = RatingForm()
-
-    return render(request, 'product.html', {'book': book, 'review_form': review_form, 'rating_form': rating_form})

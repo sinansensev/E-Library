@@ -20,6 +20,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework.routers import DefaultRouter
 from movies.views import *
 from account.urls import *
+from django.contrib import admin
+from django.urls import path, include
 #from movies.views import EducationDownloadPDFAPIView
 
 
@@ -47,7 +49,6 @@ urlpatterns = [
     #path("users1/", views.UserModelView1.as_view()),
     #path('',include("apis.urls"))
     path('', include('account.urls')),
-    path('product/<int:id>/', views.product_detail, name='product_detail'),
     path('api/download-education-pdf/<int:pk>/', EducationDownloadPDFAPIView.as_view(), name='download-pdf-api'),
     path('api/download-aksiyon-pdf/<int:pk>/', AksiyonDownloadPDFAPIView.as_view(), name='download-pdf-api'),
     path('api/download-bilimkurgu-pdf/<int:pk>/', KurguDownloadPDFAPIView.as_view(), name='download-pdf-api'),
