@@ -24,11 +24,6 @@ from django.contrib import admin
 from django.urls import path, include
 #from movies.views import EducationDownloadPDFAPIView
 
-
-#http://127.0.0.1:8000/movies
-#http://127.0.0.1:8000/movies/3
-#http://127.0.0.1:8000/movies/walking-dead
-
 router = DefaultRouter()
 router.register(r'books', CombinedModelViewSet, basename='books')
 router.register(r'cocukkitabi', Model2ViewSet, basename='cocukkitabi')
